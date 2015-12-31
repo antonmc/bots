@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2219DA5E1C320F3E00E3180F /* watson-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 2219DA5D1C320F3E00E3180F /* watson-full.png */; };
 		2299E0971C308B0F0025F919 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0961C308B0F0025F919 /* AppDelegate.swift */; };
-		2299E0991C308B0F0025F919 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0981C308B0F0025F919 /* FirstViewController.swift */; };
+		2299E0991C308B0F0025F919 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0981C308B0F0025F919 /* ScannerViewController.swift */; };
 		2299E09B1C308B0F0025F919 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E09A1C308B0F0025F919 /* SecondViewController.swift */; };
 		2299E09E1C308B0F0025F919 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2299E09C1C308B0F0025F919 /* Main.storyboard */; };
 		2299E0A01C308B0F0025F919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2299E09F1C308B0F0025F919 /* Assets.xcassets */; };
 		2299E0A31C308B0F0025F919 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2299E0A11C308B0F0025F919 /* LaunchScreen.storyboard */; };
 		2299E0AE1C308B0F0025F919 /* robothuntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0AD1C308B0F0025F919 /* robothuntTests.swift */; };
 		2299E0B91C308B0F0025F919 /* robothuntUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0B81C308B0F0025F919 /* robothuntUITests.swift */; };
+		2299E0CB1C308C350025F919 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2299E0C71C308C350025F919 /* Fabric.framework */; };
+		2299E0CC1C308C350025F919 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2299E0C81C308C350025F919 /* TwitterKit.framework */; };
+		2299E0CD1C308C350025F919 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2299E0C91C308C350025F919 /* TwitterKitResources.bundle */; };
+		2299E0CE1C308C350025F919 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2299E0CA1C308C350025F919 /* TwitterCore.framework */; };
+		2299E0D01C308F800025F919 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0CF1C308F800025F919 /* LoginViewController.swift */; };
+		2299E0D21C3093880025F919 /* CCMRadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0D11C3093880025F919 /* CCMRadarView.swift */; };
+		2299E0D41C30C7920025F919 /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0D31C30C7920025F919 /* PulseAnimation.swift */; };
+		2299E0E71C30FFEB0025F919 /* PresenceInsightsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2299E0E61C30FFEB0025F919 /* PresenceInsightsSDK.framework */; };
+		2299E0E81C30FFEB0025F919 /* PresenceInsightsSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2299E0E61C30FFEB0025F919 /* PresenceInsightsSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DE758A6789599E1DCA998291 /* libPods-robothunt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6020BAB5B369CB0E51DCC1D /* libPods-robothunt.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,21 +45,48 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2299E0DC1C30F7B80025F919 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2299E0E81C30FFEB0025F919 /* PresenceInsightsSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2219DA5D1C320F3E00E3180F /* watson-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watson-full.png"; sourceTree = "<group>"; };
+		2219DA5F1C32181900E3180F /* robothunt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "robothunt-Bridging-Header.h"; sourceTree = "<group>"; };
 		2299E0931C308B0F0025F919 /* robothunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = robothunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2299E0961C308B0F0025F919 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2299E0981C308B0F0025F919 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		2299E0981C308B0F0025F919 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		2299E09A1C308B0F0025F919 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		2299E09D1C308B0F0025F919 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2299E09F1C308B0F0025F919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2299E0A21C308B0F0025F919 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2299E0A41C308B0F0025F919 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2299E0A91C308B0F0025F919 /* robothuntTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = robothuntTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2299E0A91C308B0F0025F919 /* robothunt.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = robothunt.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2299E0AD1C308B0F0025F919 /* robothuntTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = robothuntTests.swift; sourceTree = "<group>"; };
 		2299E0AF1C308B0F0025F919 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2299E0B41C308B0F0025F919 /* robothuntUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = robothuntUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2299E0B41C308B0F0025F919 /* robothunt.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = robothunt.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2299E0B81C308B0F0025F919 /* robothuntUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = robothuntUITests.swift; sourceTree = "<group>"; };
 		2299E0BA1C308B0F0025F919 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2299E0C71C308C350025F919 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		2299E0C81C308C350025F919 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		2299E0C91C308C350025F919 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		2299E0CA1C308C350025F919 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		2299E0CF1C308F800025F919 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2299E0D11C3093880025F919 /* CCMRadarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMRadarView.swift; sourceTree = "<group>"; };
+		2299E0D31C30C7920025F919 /* PulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
+		2299E0E61C30FFEB0025F919 /* PresenceInsightsSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PresenceInsightsSDK.framework; sourceTree = "<group>"; };
+		7E5203A852E25889E2724367 /* Pods-robothunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-robothunt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-robothunt/Pods-robothunt.debug.xcconfig"; sourceTree = "<group>"; };
+		8BEA77263DAD0BB957957C98 /* Pods-robothunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-robothunt.release.xcconfig"; path = "Pods/Target Support Files/Pods-robothunt/Pods-robothunt.release.xcconfig"; sourceTree = "<group>"; };
+		E6020BAB5B369CB0E51DCC1D /* libPods-robothunt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-robothunt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +94,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2299E0CB1C308C350025F919 /* Fabric.framework in Frameworks */,
+				2299E0E71C30FFEB0025F919 /* PresenceInsightsSDK.framework in Frameworks */,
+				2299E0CE1C308C350025F919 /* TwitterCore.framework in Frameworks */,
+				2299E0CC1C308C350025F919 /* TwitterKit.framework in Frameworks */,
+				DE758A6789599E1DCA998291 /* libPods-robothunt.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,13 +119,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2219DA5C1C320F0100E3180F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				2219DA5D1C320F3E00E3180F /* watson-full.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		2299E08A1C308B0F0025F919 = {
 			isa = PBXGroup;
 			children = (
+				2219DA5F1C32181900E3180F /* robothunt-Bridging-Header.h */,
+				2299E0C91C308C350025F919 /* TwitterKitResources.bundle */,
 				2299E0951C308B0F0025F919 /* robothunt */,
 				2299E0AC1C308B0F0025F919 /* robothuntTests */,
 				2299E0B71C308B0F0025F919 /* robothuntUITests */,
 				2299E0941C308B0F0025F919 /* Products */,
+				49018839530F6A623ED41966 /* Pods */,
+				47AFBE025A84D1125D94960A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,8 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				2299E0931C308B0F0025F919 /* robothunt.app */,
-				2299E0A91C308B0F0025F919 /* robothuntTests.xctest */,
-				2299E0B41C308B0F0025F919 /* robothuntUITests.xctest */,
+				2299E0A91C308B0F0025F919 /* robothunt.xctest */,
+				2299E0B41C308B0F0025F919 /* robothunt.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,13 +154,17 @@
 		2299E0951C308B0F0025F919 /* robothunt */ = {
 			isa = PBXGroup;
 			children = (
+				2219DA5C1C320F0100E3180F /* images */,
 				2299E0961C308B0F0025F919 /* AppDelegate.swift */,
-				2299E0981C308B0F0025F919 /* FirstViewController.swift */,
+				2299E0981C308B0F0025F919 /* ScannerViewController.swift */,
 				2299E09A1C308B0F0025F919 /* SecondViewController.swift */,
 				2299E09C1C308B0F0025F919 /* Main.storyboard */,
 				2299E09F1C308B0F0025F919 /* Assets.xcassets */,
 				2299E0A11C308B0F0025F919 /* LaunchScreen.storyboard */,
 				2299E0A41C308B0F0025F919 /* Info.plist */,
+				2299E0CF1C308F800025F919 /* LoginViewController.swift */,
+				2299E0D11C3093880025F919 /* CCMRadarView.swift */,
+				2299E0D31C30C7920025F919 /* PulseAnimation.swift */,
 			);
 			path = robothunt;
 			sourceTree = "<group>";
@@ -128,6 +187,27 @@
 			path = robothuntUITests;
 			sourceTree = "<group>";
 		};
+		47AFBE025A84D1125D94960A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2299E0CA1C308C350025F919 /* TwitterCore.framework */,
+				2299E0C81C308C350025F919 /* TwitterKit.framework */,
+				2299E0C71C308C350025F919 /* Fabric.framework */,
+				2299E0E61C30FFEB0025F919 /* PresenceInsightsSDK.framework */,
+				E6020BAB5B369CB0E51DCC1D /* libPods-robothunt.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49018839530F6A623ED41966 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E5203A852E25889E2724367 /* Pods-robothunt.debug.xcconfig */,
+				8BEA77263DAD0BB957957C98 /* Pods-robothunt.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +215,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2299E0BD1C308B0F0025F919 /* Build configuration list for PBXNativeTarget "robothunt" */;
 			buildPhases = (
+				1A33A1801E496525480F9478 /* Check Pods Manifest.lock */,
 				2299E08F1C308B0F0025F919 /* Sources */,
 				2299E0901C308B0F0025F919 /* Frameworks */,
 				2299E0911C308B0F0025F919 /* Resources */,
+				2299E0C61C308BF50025F919 /* ShellScript */,
+				2299E0DC1C30F7B80025F919 /* Embed Frameworks */,
+				73D62F7EF8653005B9E52CC1 /* Embed Pods Frameworks */,
+				DA87CB55F3B31338131CBE90 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -163,7 +248,7 @@
 			);
 			name = robothuntTests;
 			productName = robothuntTests;
-			productReference = 2299E0A91C308B0F0025F919 /* robothuntTests.xctest */;
+			productReference = 2299E0A91C308B0F0025F919 /* robothunt.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		2299E0B31C308B0F0025F919 /* robothuntUITests */ = {
@@ -181,7 +266,7 @@
 			);
 			name = robothuntUITests;
 			productName = robothuntUITests;
-			productReference = 2299E0B41C308B0F0025F919 /* robothuntUITests.xctest */;
+			productReference = 2299E0B41C308B0F0025F919 /* robothunt.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -196,6 +281,11 @@
 				TargetAttributes = {
 					2299E0921C308B0F0025F919 = {
 						CreatedOnToolsVersion = 7.1.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					2299E0A81C308B0F0025F919 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -232,6 +322,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2219DA5E1C320F3E00E3180F /* watson-full.png in Resources */,
+				2299E0CD1C308C350025F919 /* TwitterKitResources.bundle in Resources */,
 				2299E0A31C308B0F0025F919 /* LaunchScreen.storyboard in Resources */,
 				2299E0A01C308B0F0025F919 /* Assets.xcassets in Resources */,
 				2299E09E1C308B0F0025F919 /* Main.storyboard in Resources */,
@@ -254,14 +346,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1A33A1801E496525480F9478 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2299E0C61C308BF50025F919 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 3250f6a88b8a360aee8daa26c98be9465ae59290 fc6abcd338518bb529cc3cc640cd87a1013b2a0dd8a143156b4bdbf9d4484ac8";
+		};
+		73D62F7EF8653005B9E52CC1 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-robothunt/Pods-robothunt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA87CB55F3B31338131CBE90 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-robothunt/Pods-robothunt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2299E08F1C308B0F0025F919 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2299E0D01C308F800025F919 /* LoginViewController.swift in Sources */,
+				2299E0D21C3093880025F919 /* CCMRadarView.swift in Sources */,
 				2299E09B1C308B0F0025F919 /* SecondViewController.swift in Sources */,
 				2299E0971C308B0F0025F919 /* AppDelegate.swift in Sources */,
-				2299E0991C308B0F0025F919 /* FirstViewController.swift in Sources */,
+				2299E0D41C30C7920025F919 /* PulseAnimation.swift in Sources */,
+				2299E0991C308B0F0025F919 /* ScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +492,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -380,6 +537,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -399,23 +557,37 @@
 		};
 		2299E0BE1C308B0F0025F919 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E5203A852E25889E2724367 /* Pods-robothunt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = robothunt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ibm.com.robothunt;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = robothunt;
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "robothunt-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		2299E0BF1C308B0F0025F919 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BEA77263DAD0BB957957C98 /* Pods-robothunt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = robothunt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ibm.com.robothunt;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = robothunt;
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "robothunt-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -426,7 +598,7 @@
 				INFOPLIST_FILE = robothuntTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ibm.com.robothuntTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = robothunt;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/robothunt.app/robothunt";
 			};
 			name = Debug;
@@ -438,7 +610,7 @@
 				INFOPLIST_FILE = robothuntTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ibm.com.robothuntTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = robothunt;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/robothunt.app/robothunt";
 			};
 			name = Release;
@@ -449,7 +621,7 @@
 				INFOPLIST_FILE = robothuntUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ibm.com.robothuntUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = robothunt;
 				TEST_TARGET_NAME = robothunt;
 				USES_XCTRUNNER = YES;
 			};
@@ -461,7 +633,7 @@
 				INFOPLIST_FILE = robothuntUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ibm.com.robothuntUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = robothunt;
 				TEST_TARGET_NAME = robothunt;
 				USES_XCTRUNNER = YES;
 			};
@@ -486,6 +658,7 @@
 				2299E0BF1C308B0F0025F919 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2299E0C01C308B0F0025F919 /* Build configuration list for PBXNativeTarget "robothuntTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +667,7 @@
 				2299E0C21C308B0F0025F919 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2299E0C31C308B0F0025F919 /* Build configuration list for PBXNativeTarget "robothuntUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +676,7 @@
 				2299E0C51C308B0F0025F919 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

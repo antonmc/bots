@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Permit Robot Hunt to use your location? ( it&apos;s what fuels the game )</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -20,8 +22,32 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>3250f6a88b8a360aee8daa26c98be9465ae59290</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>consumerKey</key>
+					<string>xXKotxScvCcPShgVNlYbWw1z1</string>
+					<key>consumerSecret</key>
+					<string>oRs19ecp3QvF2VgpbN2LyfeyOb66giqmgch8Z64hbL5R87oKUT</string>
+				</dict>
+				<key>KitName</key>
+				<string>Twitter</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
