@@ -25,6 +25,8 @@
 		2299E0D41C30C7920025F919 /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0D31C30C7920025F919 /* PulseAnimation.swift */; };
 		2299E0E71C30FFEB0025F919 /* PresenceInsightsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2299E0E61C30FFEB0025F919 /* PresenceInsightsSDK.framework */; };
 		2299E0E81C30FFEB0025F919 /* PresenceInsightsSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2299E0E61C30FFEB0025F919 /* PresenceInsightsSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		229C73471C34AE9A00655E62 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229C73461C34AE9A00655E62 /* FBSDKLoginKit.framework */; };
+		229C73491C34AF9C00655E62 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229C73481C34AF9C00655E62 /* FBSDKCoreKit.framework */; };
 		DE758A6789599E1DCA998291 /* libPods-robothunt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6020BAB5B369CB0E51DCC1D /* libPods-robothunt.a */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,8 @@
 		2299E0D11C3093880025F919 /* CCMRadarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMRadarView.swift; sourceTree = "<group>"; };
 		2299E0D31C30C7920025F919 /* PulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
 		2299E0E61C30FFEB0025F919 /* PresenceInsightsSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PresenceInsightsSDK.framework; sourceTree = "<group>"; };
+		229C73461C34AE9A00655E62 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		229C73481C34AF9C00655E62 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		7E5203A852E25889E2724367 /* Pods-robothunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-robothunt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-robothunt/Pods-robothunt.debug.xcconfig"; sourceTree = "<group>"; };
 		8BEA77263DAD0BB957957C98 /* Pods-robothunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-robothunt.release.xcconfig"; path = "Pods/Target Support Files/Pods-robothunt/Pods-robothunt.release.xcconfig"; sourceTree = "<group>"; };
 		E6020BAB5B369CB0E51DCC1D /* libPods-robothunt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-robothunt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +100,9 @@
 			files = (
 				2299E0CB1C308C350025F919 /* Fabric.framework in Frameworks */,
 				2299E0E71C30FFEB0025F919 /* PresenceInsightsSDK.framework in Frameworks */,
+				229C73471C34AE9A00655E62 /* FBSDKLoginKit.framework in Frameworks */,
 				2299E0CE1C308C350025F919 /* TwitterCore.framework in Frameworks */,
+				229C73491C34AF9C00655E62 /* FBSDKCoreKit.framework in Frameworks */,
 				2299E0CC1C308C350025F919 /* TwitterKit.framework in Frameworks */,
 				DE758A6789599E1DCA998291 /* libPods-robothunt.a in Frameworks */,
 			);
@@ -190,6 +196,8 @@
 		47AFBE025A84D1125D94960A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				229C73481C34AF9C00655E62 /* FBSDKCoreKit.framework */,
+				229C73461C34AE9A00655E62 /* FBSDKLoginKit.framework */,
 				2299E0CA1C308C350025F919 /* TwitterCore.framework */,
 				2299E0C81C308C350025F919 /* TwitterKit.framework */,
 				2299E0C71C308C350025F919 /* Fabric.framework */,

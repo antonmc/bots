@@ -130,9 +130,51 @@
                     <view key="view" contentMode="scaleToFill" id="5ar-BB-Jfy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="center" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="d0R-9d-0AM">
+                                <rect key="frame" x="18" y="28" width="240" height="548"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rrl-L1-PVr">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="50"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="QvN-9g-OCs"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PcJ-Q3-Tcp">
+                                        <rect key="frame" x="0.0" y="50" width="240" height="50"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="mgj-MT-sYY"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oaN-e0-r8x">
+                                        <rect key="frame" x="0.0" y="100" width="240" height="448"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="uMX-6t-lXv"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="PcJ-Q3-Tcp" firstAttribute="leading" secondItem="d0R-9d-0AM" secondAttribute="leading" constant="-26" id="BhM-vv-uJg"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d0R-9d-0AM" firstAttribute="top" secondItem="ebR-rA-Nj1" secondAttribute="bottom" id="897-7i-fg9"/>
+                            <constraint firstItem="d0R-9d-0AM" firstAttribute="centerY" secondItem="5ar-BB-Jfy" secondAttribute="centerY" id="S7E-Cd-0X5"/>
+                            <constraint firstItem="uD7-Jn-hJk" firstAttribute="top" secondItem="d0R-9d-0AM" secondAttribute="bottom" id="hw7-4h-xRh"/>
+                            <constraint firstItem="d0R-9d-0AM" firstAttribute="centerX" secondItem="5ar-BB-Jfy" secondAttribute="centerX" id="jH6-Vi-FyK"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="facebookView" destination="Rrl-L1-PVr" id="2E8-be-Nhc"/>
+                        <outlet property="twitterView" destination="PcJ-Q3-Tcp" id="2Wn-A7-EL1"/>
                         <segue destination="49e-Tb-3d3" kind="modal" identifier="beginSegue" id="ORC-IP-7oq"/>
                     </connections>
                 </viewController>

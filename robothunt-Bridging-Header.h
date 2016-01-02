@@ -11,4 +11,7 @@
 
 #import "CloudantSync.h"
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 #endif /* robothunt_Bridging_Header_h */

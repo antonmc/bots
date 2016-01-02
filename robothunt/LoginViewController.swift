@@ -10,11 +10,41 @@ import UIKit
 import TwitterKit
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+    
+    @IBOutlet var facebookView: UIView!
+    @IBOutlet var twitterView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        if (FBSDKAccessToken.currentAccessToken() != nil)
+        {
+            
+            self.performSegueWithIdentifier("beginSegue", sender: self)
+
+            // User is already logged in, do work such as go to next view controller.
+        }
+        else
+        {
+            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+            
+            facebookView.addSubview(loginView)
+//            facebookView.bringSubviewToFront(loginView)
+//            self.view.bringSubviewToFront(loginView)
+            loginView.frame.size.width = 280
+            loginView.frame.size.height = 40
+            
+
+            loginView.center = facebookView.center
+            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+            loginView.delegate = self
+            
+
+        }
+        
         
         let logInButton = TWTRLogInButton { (session, error) in
             if let unwrappedSession = session {
@@ -72,17 +102,7 @@ class LoginViewController: UIViewController {
                 }catch {
                     print("Encountered an error: \(error)")
                 }
-                
 
-                
-                
-                
-                
-                
-                
-                
-                
-                
 
                 
             } else {
@@ -90,13 +110,61 @@ class LoginViewController: UIViewController {
             }
         }
         
+        
         // TODO: Change where the log in button is positioned in your view
-        logInButton.center = self.view.center
-        self.view.addSubview(logInButton)
-        
-        
+//        logInButton.center = self.view.center
+        twitterView.addSubview(logInButton)
+//        logInButton.center = twitterView.center
+
         
     }
+    
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("User Logged In")
+        
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email")
+            {
+                // Do work
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
+    }
+    
+    func returnUserData()
+    {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched user: \(result)")
+                let userName : NSString = result.valueForKey("name") as! NSString
+                print("User Name is: \(userName)")
+                let userEmail : NSString = result.valueForKey("email") as! NSString
+                print("User Email is: \(userEmail)")
+            }
+        })
+    }
+    
     
     func createPlayer(person:NSString, store:CDTDatastore, robotstore:CDTDatastore, manager:CDTDatastoreManager){
         
@@ -164,7 +232,5 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
 
