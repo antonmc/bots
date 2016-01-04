@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 import PresenceInsightsSDK
 import CoreLocation
 
@@ -108,6 +107,26 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
 //        self.didRangeBeacons(<#T##beacons: [CLBeacon]##[CLBeacon]#>)
         
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let bigGauge=MSSimpleGauge( frame: CGRectMake(self.view.frame.size.width/2-100, 160, 200, 175) )
+        
+        bigGauge.fillArcFillColor=UIColor.redColor()
+        bigGauge.backgroundColor = UIColor.clearColor()
+        bigGauge.backgroundArcFillColor = UIColor( colorLiteralRed: 0.49, green:0.812, blue:0.714, alpha:1 )
+        bigGauge.fillArcStrokeColor = UIColor.clearColor()
+        bigGauge.backgroundArcStrokeColor = UIColor.clearColor()
+//        bigGauge.backgroundGradient = nil
+        
+        bigGauge.startAngle = 0
+        bigGauge.endAngle = 180
+        bigGauge.value = 0
+        
+        bigGauge.arcThickness = 0.3
+        
+//        bigGauge.center = self.view.center;
+        self.view.addSubview(bigGauge)
+        
+        print(bigGauge)
     }
     
     func beaconHandler(){

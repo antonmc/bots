@@ -14,4 +14,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+#import "MSSimpleGauge.h"
+
 #endif /* robothunt_Bridging_Header_h */

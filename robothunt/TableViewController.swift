@@ -13,21 +13,11 @@ class TableViewController: UITableViewController {
     var bots: NSMutableArray!
     
     var appDelegate:AppDelegate!
-
-    
-    var data = ["Apple", "Apricot", "Banana", "Blueberry", "Cantaloupe", "Cherry",
-        "Clementine", "Coconut", "Cranberry", "Fig", "Grape", "Grapefruit",
-        "Kiwi fruit", "Lemon", "Lime", "Lychee", "Mandarine", "Mango",
-        "Melon", "Nectarine", "Olive", "Orange", "Papaya", "Peach",
-        "Pear", "Pineapple", "Raspberry", "Strawberry"]
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-
-         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         do{
             
