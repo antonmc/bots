@@ -15,10 +15,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet var facebookView: UIView!
     @IBOutlet var twitterView: UIView!
     
+    var appDelegate:AppDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -38,7 +41,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             loginView.frame.size.height = 40
             
 
-            loginView.center = facebookView.center
+        //    loginView.center = facebookView.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
             
@@ -81,11 +84,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     if result.documentIds.count > 0{
                         
                         playerFound = true
+                        
+                        self.appDelegate.playerName = unwrappedSession.userName
                     }
                     
                     result.enumerateObjectsUsingBlock({ (rev, idx, stop) -> Void in
                         
                         let robotData = rev.body;
+                        
+                        
                         
                         playerFound = true
 
