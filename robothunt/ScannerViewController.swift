@@ -12,10 +12,17 @@ import PresenceInsightsSDK
 import CoreLocation
 
 
+
 class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeaconSensorDelegate{
     
-    @IBOutlet var radar: CCMRadarView!
+//    @IBOutlet var radar: CCMRadarView!
     @IBOutlet var imageView: UIImageView!
+    
+    var appDelegate:AppDelegate!
+    
+    var disruptionRange = 1.4
+    
+    var gauge:MSSimpleGauge!
     
     let locationManager = CLLocationManager()
     let tenantID = ""
@@ -27,12 +34,13 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
     let baseURL =  ""
     
     var bots: NSMutableArray!
-
     
     var piBeaconSensor : PIBeaconSensor!
     var piAdapter : PIAdapter!
     
     override func viewDidLoad() {
+        
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         
         let pulseEffect = PulseAnimation(repeatCount: Float.infinity, radius:300, position:self.view.center)
@@ -45,11 +53,11 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
         
             let documentsDir = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!
         
-            let storeURL = documentsDir.URLByAppendingPathComponent("cloudant-sync-datastore")
+            let storeURL = documentsDir.URLByAppendingPathComponent("robothunt-datastore")
             let path = storeURL.path
         
             let manager = try CDTDatastoreManager(directory: path)
-            let datastore = try manager.datastoreNamed("my_datastore")
+            let datastore = try manager.datastoreNamed("robotDatastore")
 
             var test = false;
         
@@ -108,25 +116,27 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        let bigGauge=MSSimpleGauge( frame: CGRectMake(self.view.frame.size.width/2-100, 160, 200, 175) )
+        self.gauge = MSSimpleGauge( frame: CGRectMake(self.view.frame.size.width/2-100, 160, 200, 175) )
         
-        bigGauge.fillArcFillColor=UIColor.redColor()
-        bigGauge.backgroundColor = UIColor.clearColor()
-        bigGauge.backgroundArcFillColor = UIColor( colorLiteralRed: 0.49, green:0.812, blue:0.714, alpha:1 )
-        bigGauge.fillArcStrokeColor = UIColor.clearColor()
-        bigGauge.backgroundArcStrokeColor = UIColor.clearColor()
-//        bigGauge.backgroundGradient = nil
+        self.gauge.fillArcFillColor = UIColor( colorLiteralRed: 0.49, green:0.812, blue:0.714, alpha:1 )
+        self.gauge.backgroundColor = UIColor.clearColor()
+        self.gauge.backgroundArcFillColor = UIColor( colorLiteralRed: 0.49, green:0.812, blue:0.714, alpha:0.5 )
+        self.gauge.fillArcStrokeColor = UIColor.clearColor()
+        self.gauge.backgroundArcStrokeColor = UIColor.clearColor()
+        self.gauge.backgroundGradient = nil
         
-        bigGauge.startAngle = 0
-        bigGauge.endAngle = 180
-        bigGauge.value = 0
+        self.gauge.startAngle = 0
+        self.gauge.endAngle = 180
+        self.gauge.value = 0
+        self.gauge.maxValue = 15
         
-        bigGauge.arcThickness = 0.3
+        self.gauge.arcThickness = 0.3
         
-//        bigGauge.center = self.view.center;
-        self.view.addSubview(bigGauge)
+        self.gauge.needleView.needleColor = UIColor.orangeColor()
         
-        print(bigGauge)
+        self.view.addSubview(self.gauge)
+        
+        print(self.gauge)
     }
     
     func beaconHandler(){
@@ -134,8 +144,8 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        radar.startAnimation()
+//        super.viewDidAppear(animated)
+//        radar.startAnimation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -159,7 +169,7 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
         }
     }
     
-    @IBAction func stopSensing(sender: UIButton) {
+    @IBAction func stopSensing() {
         //sdk call to stop beacon sensing
         piBeaconSensor.stop()
         alert("Success", messageInput: "Successfully stopped sensing for beacons")
@@ -209,28 +219,121 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
         // Do whatever you want with the ranged beacons here.
         //anything you want to locally on the app goes here
         
-        for beacon in beacons {
+        
+        if let beacon:CLBeacon = beacons.first{
+        
+            if let minor:NSNumber = beacon.minor{
+                
+                print( "FIRST BEACON: ")
+        
+                if let distance:Float = Float(beacon.accuracy){
             
-            for bot in self.bots{
-                
-                let robot = bot as! NSMutableDictionary
-                
-                let min = (robot.objectForKey("beacon") as! NSString).integerValue
-                
-                if( min == beacon.minor ){
+                    print( minor )
+            
+                    print( distance )
+        
+                    if distance > 0 {
+            
+                        if( distance > Float(self.disruptionRange) ){
+            
+                            self.gauge.value = self.gauge.maxValue - distance
                     
-                    print( robot.objectForKey("name") as! NSString )
+                            
+                           //                            print( bot.objectForKey("status") as! NSString )
+            
+                        }else{
+//                          self.performSegueWithIdentifier("robotsegue", sender: self)
+//                          self.stopSensing()
+                            
+                            let bot = self.identifyRobot(minor)
+                            
+                            if self.omitRobot(self.appDelegate.playerName){
+                                print( "this robot has been disrupted" )
+                            }else{
+                                print( "this robot has not been disrupted")
+                            }
+                            
+                            print( bot.objectForKey("name") as! NSString )
+
+                        }
+                    }
                 }
-                
             }
+        }
+    }
+    
+    func identifyRobot( minor:NSNumber ) -> NSMutableDictionary{
+        
+        var foundBot:NSMutableDictionary = self.bots[0] as! NSMutableDictionary
+        
+        for bot in self.bots{
             
+            let robot = bot as! NSMutableDictionary
             
-            print( beacon.minor )
-            print( beacon.proximity.hashValue )
+            let min = (robot.objectForKey("beacon") as! NSString).integerValue
+            
+            if( min == minor ){
+                foundBot = robot
+                break
+            }
+                            
         }
         
-        //for testing purposes. will just print out to the console
-//        print(beacons)
+        return foundBot
+    }
+    
+    
+    func omitRobot( name:NSString ) -> Bool {
+        
+        var omit:Bool = false
+        
+        do{
+        
+            let fileManager = NSFileManager.defaultManager()
+        
+            let documentsDir = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!
+        
+            let storeURL = documentsDir.URLByAppendingPathComponent("cloudant-sync-datastore")
+            
+            let path = storeURL.path
+        
+            let manager = try CDTDatastoreManager(directory: path)
+        
+            let datastore = try manager.datastoreNamed("playerdata")
+            
+            let query = [ "name" : name ]
+            
+            let result = datastore.find(query)
+        
+            if result.documentIds.count > 0{
+                
+                result.enumerateObjectsUsingBlock({ (rev, idx, stop) -> Void in
+            
+                    let playerData = rev.body;
+                    
+                    let bots = playerData.objectForKey("robots") as! NSMutableArray
+            
+                    for bot in bots{
+                    
+                        if bot.objectForKey("name") as! NSString == name {
+                        
+                            if bot.objectForKey("status") as! NSString == "wanted"{
+                                omit = false
+                            }else{
+                                omit = true
+                            }
+                        
+                            break
+                        }
+                    }
+                })
+            }
+            
+        }catch {
+            print("Encountered an error: \(error)")
+        }
+        
+        return omit
     }
     
     //function to easily create alert messages
@@ -240,7 +343,6 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
-
 }
 
 

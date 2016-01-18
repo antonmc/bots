@@ -31,7 +31,7 @@ class PulseAnimation: CALayer {
         super.init()
         self.contentsScale = UIScreen.mainScreen().scale
         self.opacity = 0.0
-        self.backgroundColor = UIColor( red:0, green:0.698, blue:0.792, alpha:0.5 ).CGColor // UIColor.blueColor().CGColor
+        self.backgroundColor = UIColor( red:0, green:0.698, blue:0.792, alpha:0.8 ).CGColor // UIColor.blueColor().CGColor
         self.radius = radius;
         self.repetitions = repeatCount;
         self.position = position

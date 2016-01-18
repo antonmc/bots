@@ -51,16 +51,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         let logInButton = TWTRLogInButton { (session, error) in
             if let unwrappedSession = session {
-//                let alert = UIAlertController(title: "Logged In",
-//                    message: "User \(unwrappedSession.userName) has logged in",
-//                    preferredStyle: UIAlertControllerStyle.Alert
-//                    
-//                )
-//                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-//                self.presentViewController(alert, animated: true, completion: nil)
-                
-                
-                
+
                 do{
                     
                     let fileManager = NSFileManager.defaultManager()
@@ -91,7 +82,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     result.enumerateObjectsUsingBlock({ (rev, idx, stop) -> Void in
                         
                         let robotData = rev.body;
-                        
                         
                         
                         playerFound = true
@@ -196,7 +186,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
                 let name = robot.objectForKey("name") as! NSString
                 
-                let status = ["name":name,"disruptionSeconds":"","timestamp":"","status":"wanted","steps":0]
+                let mugshot = robot.objectForKey("mugshotBase64") as! NSString
+                
+                let primaryColor = robot.objectForKey("primaryColor") as! NSString
+                
+                let status = ["name":name,"mugshot":mugshot, "primaryColor": primaryColor, "disruptionSeconds":"","timestamp":"","status":"wanted","steps":0]
                 
                 let robotStatus = (status as NSDictionary).mutableCopy() as! NSMutableDictionary
 

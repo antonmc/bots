@@ -29,9 +29,8 @@ class TableViewController: UITableViewController {
             let path = storeURL.path
             
             let manager = try CDTDatastoreManager(directory: path)
-            let datastore = try manager.datastoreNamed("player")
             
-            let robotstore = try manager.datastoreNamed("my_datastore")
+            let datastore = try manager.datastoreNamed("player")
             
             var playerFound = false
             
@@ -66,10 +65,6 @@ class TableViewController: UITableViewController {
             print("Encountered an error: \(error)")
         }
 
-        
-        
-        
-        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -77,7 +72,32 @@ class TableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    
+    func colorWithHexString (hex:String) -> UIColor {
+        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
+        
+        if (cString.hasPrefix("#")) {
+            cString = (cString as NSString).substringFromIndex(1)
+        }
+        
+        if (cString.characters.count != 6) {
+            return UIColor.grayColor()
+        }
+        
+        let rString = (cString as NSString).substringToIndex(2)
+        let gString = ((cString as NSString).substringFromIndex(2) as NSString).substringToIndex(2)
+        let bString = ((cString as NSString).substringFromIndex(4) as NSString).substringToIndex(2)
+        
+        var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
+        NSScanner(string: rString).scanHexInt(&r)
+        NSScanner(string: gString).scanHexInt(&g)
+        NSScanner(string: bString).scanHexInt(&b)
+        
+        
+        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -97,12 +117,38 @@ class TableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FruitCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("RobotCell", forIndexPath: indexPath) as! UITableViewCell
         
         let robotentry = self.bots[indexPath.row] as! NSMutableDictionary
         
+        let color = robotentry.objectForKey("primaryColor") as? String
         
-        cell.textLabel?.text = robotentry.objectForKey("name") as! String
+        let uicolor = self.colorWithHexString(color!)
+   
+        
+        let decodedData = NSData(base64EncodedString: robotentry.objectForKey("mugshot") as! String, options: NSDataBase64DecodingOptions(rawValue: 0))
+        let decodedImage = UIImage(data: decodedData!)
+        
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        imageView.image = decodedImage
+        
+        let nameView = cell.viewWithTag(2) as! UILabel
+        nameView.text = robotentry.objectForKey("name") as? String
+        nameView.textColor = uicolor
+        
+        let statusView = cell.viewWithTag(3) as! UILabel
+        statusView.text = robotentry.objectForKey("status") as? String
+        statusView.textColor = uicolor
+        
+        let pointsLabelView = cell.viewWithTag(4) as! UILabel
+        pointsLabelView.text = "points"
+        pointsLabelView.textColor = uicolor
+        
+        let pointsView = cell.viewWithTag(5) as! UILabel
+        pointsView.text = "0"
+        pointsView.textColor = uicolor
+        
+        
         return cell
     }
 
