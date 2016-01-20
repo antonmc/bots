@@ -19,6 +19,8 @@ class TableViewController: UITableViewController {
     
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
+        self.view.backgroundColor = self.colorWithHexString("1d3649")
+        
         do{
             
             let fileManager = NSFileManager.defaultManager()
@@ -119,12 +121,11 @@ class TableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RobotCell", forIndexPath: indexPath) as! UITableViewCell
         
+        cell.backgroundColor = self.colorWithHexString("1d3649")
+        
         let robotentry = self.bots[indexPath.row] as! NSMutableDictionary
         
-        let color = robotentry.objectForKey("primaryColor") as? String
-        
-        let uicolor = self.colorWithHexString(color!)
-   
+        let uicolor = UIColor.whiteColor()
         
         let decodedData = NSData(base64EncodedString: robotentry.objectForKey("mugshot") as! String, options: NSDataBase64DecodingOptions(rawValue: 0))
         let decodedImage = UIImage(data: decodedData!)

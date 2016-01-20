@@ -24,6 +24,8 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
     
     var gauge:MSSimpleGauge!
     
+    var encounteredRobot:NSMutableDictionary!
+    
     let locationManager = CLLocationManager()
     let tenantID = ""
     let orgID = ""
@@ -42,6 +44,10 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
         
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        self.view.backgroundColor = self.colorWithHexString("1d3649")
+        
         
         let pulseEffect = PulseAnimation(repeatCount: Float.infinity, radius:300, position:self.view.center)
         view.layer.insertSublayer(pulseEffect, below: imageView.layer)
@@ -53,11 +59,11 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
         
             let documentsDir = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!
         
-            let storeURL = documentsDir.URLByAppendingPathComponent("robothunt-datastore")
+            let storeURL = documentsDir.URLByAppendingPathComponent("cloudant-sync-datastore")
             let path = storeURL.path
         
             let manager = try CDTDatastoreManager(directory: path)
-            let datastore = try manager.datastoreNamed("robotDatastore")
+            let datastore = try manager.datastoreNamed("my_datastore")
 
             var test = false;
         
@@ -118,9 +124,9 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
         
         self.gauge = MSSimpleGauge( frame: CGRectMake(self.view.frame.size.width/2-100, 160, 200, 175) )
         
-        self.gauge.fillArcFillColor = UIColor( colorLiteralRed: 0.49, green:0.812, blue:0.714, alpha:1 )
+        self.gauge.fillArcFillColor = self.colorWithHexString("04b39f")
         self.gauge.backgroundColor = UIColor.clearColor()
-        self.gauge.backgroundArcFillColor = UIColor( colorLiteralRed: 0.49, green:0.812, blue:0.714, alpha:0.5 )
+        self.gauge.backgroundArcFillColor = self.colorWithHexString("b2dfd7")
         self.gauge.fillArcStrokeColor = UIColor.clearColor()
         self.gauge.backgroundArcStrokeColor = UIColor.clearColor()
         self.gauge.backgroundGradient = nil
@@ -172,7 +178,7 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
     @IBAction func stopSensing() {
         //sdk call to stop beacon sensing
         piBeaconSensor.stop()
-        alert("Success", messageInput: "Successfully stopped sensing for beacons")
+//        alert("Success", messageInput: "Successfully stopped sensing for beacons")
         
     }
     
@@ -233,11 +239,14 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
                     print( distance )
         
                     if distance > 0 {
-            
+                        
+                        
                         if( distance > Float(self.disruptionRange) ){
             
                             self.gauge.value = self.gauge.maxValue - distance
                     
+                            print( "SENSING ROBOT" )
+
                             
                            //                            print( bot.objectForKey("status") as! NSString )
             
@@ -245,12 +254,18 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
 //                          self.performSegueWithIdentifier("robotsegue", sender: self)
 //                          self.stopSensing()
                             
+                            print( "ENGAGING ROBOT" )
+                            
                             let bot = self.identifyRobot(minor)
                             
                             if self.omitRobot(self.appDelegate.playerName){
                                 print( "this robot has been disrupted" )
                             }else{
                                 print( "this robot has not been disrupted")
+                                
+                                self.encounteredRobot = bot
+                                self.performSegueWithIdentifier("robotsegue", sender: self)
+                                self.stopSensing()
                             }
                             
                             print( bot.objectForKey("name") as! NSString )
@@ -264,7 +279,7 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
     
     func identifyRobot( minor:NSNumber ) -> NSMutableDictionary{
         
-        var foundBot:NSMutableDictionary = self.bots[0] as! NSMutableDictionary
+        var foundBot:NSMutableDictionary?
         
         for bot in self.bots{
             
@@ -279,9 +294,32 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
                             
         }
         
-        return foundBot
+        return foundBot!
     }
     
+    func colorWithHexString (hex:String) -> UIColor {
+        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
+        
+        if (cString.hasPrefix("#")) {
+            cString = (cString as NSString).substringFromIndex(1)
+        }
+        
+        if (cString.characters.count != 6) {
+            return UIColor.grayColor()
+        }
+        
+        let rString = (cString as NSString).substringToIndex(2)
+        let gString = ((cString as NSString).substringFromIndex(2) as NSString).substringToIndex(2)
+        let bString = ((cString as NSString).substringFromIndex(4) as NSString).substringToIndex(2)
+        
+        var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
+        NSScanner(string: rString).scanHexInt(&r)
+        NSScanner(string: gString).scanHexInt(&g)
+        NSScanner(string: bString).scanHexInt(&b)
+        
+        
+        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
+    }
     
     func omitRobot( name:NSString ) -> Bool {
         
@@ -342,6 +380,15 @@ class ScannerViewController: UIViewController, CLLocationManagerDelegate, PIBeac
         alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
         
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        let robotController = segue.destinationViewController as! RobotViewController
+        robotController.robotData = self.encounteredRobot
     }
 }
 

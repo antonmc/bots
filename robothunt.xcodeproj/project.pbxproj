@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2219DA5E1C320F3E00E3180F /* watson-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 2219DA5D1C320F3E00E3180F /* watson-full.png */; };
+		2281485F1C4EBBAA000C5355 /* RobotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281485E1C4EBBAA000C5355 /* RobotViewController.swift */; };
+		228148611C4ECB11000C5355 /* wesley.png in Resources */ = {isa = PBXBuildFile; fileRef = 228148601C4ECB11000C5355 /* wesley.png */; };
+		228148631C4FF65B000C5355 /* heather.png in Resources */ = {isa = PBXBuildFile; fileRef = 228148621C4FF65B000C5355 /* heather.png */; };
+		228148651C50129D000C5355 /* alexandra.png in Resources */ = {isa = PBXBuildFile; fileRef = 228148641C50129D000C5355 /* alexandra.png */; };
+		228148671C5020A6000C5355 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228148661C5020A6000C5355 /* LoadingViewController.swift */; };
 		2299E0971C308B0F0025F919 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0961C308B0F0025F919 /* AppDelegate.swift */; };
 		2299E0991C308B0F0025F919 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299E0981C308B0F0025F919 /* ScannerViewController.swift */; };
 		2299E09E1C308B0F0025F919 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2299E09C1C308B0F0025F919 /* Main.storyboard */; };
@@ -66,6 +71,11 @@
 /* Begin PBXFileReference section */
 		2219DA5D1C320F3E00E3180F /* watson-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watson-full.png"; sourceTree = "<group>"; };
 		2219DA5F1C32181900E3180F /* robothunt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "robothunt-Bridging-Header.h"; sourceTree = "<group>"; };
+		2281485E1C4EBBAA000C5355 /* RobotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotViewController.swift; sourceTree = "<group>"; };
+		228148601C4ECB11000C5355 /* wesley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wesley.png; sourceTree = "<group>"; };
+		228148621C4FF65B000C5355 /* heather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heather.png; sourceTree = "<group>"; };
+		228148641C50129D000C5355 /* alexandra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alexandra.png; sourceTree = "<group>"; };
+		228148661C5020A6000C5355 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		2299E0931C308B0F0025F919 /* robothunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = robothunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2299E0961C308B0F0025F919 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2299E0981C308B0F0025F919 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +143,9 @@
 			isa = PBXGroup;
 			children = (
 				229C73521C3C187100655E62 /* devatgadget.png */,
+				228148641C50129D000C5355 /* alexandra.png */,
+				228148601C4ECB11000C5355 /* wesley.png */,
+				228148621C4FF65B000C5355 /* heather.png */,
 				229C73501C3C15A900655E62 /* devat.png */,
 				2219DA5D1C320F3E00E3180F /* watson-full.png */,
 			);
@@ -177,6 +190,8 @@
 				2299E0D11C3093880025F919 /* CCMRadarView.swift */,
 				2299E0D31C30C7920025F919 /* PulseAnimation.swift */,
 				229C734A1C3A17A000655E62 /* TableViewController.swift */,
+				2281485E1C4EBBAA000C5355 /* RobotViewController.swift */,
+				228148661C5020A6000C5355 /* LoadingViewController.swift */,
 			);
 			path = robothunt;
 			sourceTree = "<group>";
@@ -336,12 +351,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				228148631C4FF65B000C5355 /* heather.png in Resources */,
 				2219DA5E1C320F3E00E3180F /* watson-full.png in Resources */,
 				2299E0CD1C308C350025F919 /* TwitterKitResources.bundle in Resources */,
 				2299E0A31C308B0F0025F919 /* LaunchScreen.storyboard in Resources */,
+				228148651C50129D000C5355 /* alexandra.png in Resources */,
 				2299E0A01C308B0F0025F919 /* Assets.xcassets in Resources */,
 				229C73511C3C15A900655E62 /* devat.png in Resources */,
 				229C73531C3C187100655E62 /* devatgadget.png in Resources */,
+				228148611C4ECB11000C5355 /* wesley.png in Resources */,
 				2299E09E1C308B0F0025F919 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +449,8 @@
 				2299E0D01C308F800025F919 /* LoginViewController.swift in Sources */,
 				229C734B1C3A17A000655E62 /* TableViewController.swift in Sources */,
 				2299E0D21C3093880025F919 /* CCMRadarView.swift in Sources */,
+				228148671C5020A6000C5355 /* LoadingViewController.swift in Sources */,
+				2281485F1C4EBBAA000C5355 /* RobotViewController.swift in Sources */,
 				2299E0971C308B0F0025F919 /* AppDelegate.swift in Sources */,
 				2299E0D41C30C7920025F919 /* PulseAnimation.swift in Sources */,
 				2299E0991C308B0F0025F919 /* ScannerViewController.swift in Sources */,

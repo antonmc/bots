@@ -30,9 +30,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
-        UITabBar.appearance().barTintColor = UIColor( colorLiteralRed:0.231, green:0.357, blue:0.494, alpha:1 )
+        UITabBar.appearance().barTintColor = UIColor( colorLiteralRed:0.196, green:0.361, blue:0.502, alpha:1)
+        UITabBar.appearance().tintColor = UIColor.whiteColor()
         
-        UITabBar.appearance().tintColor = UIColor( colorLiteralRed: 0.561, green:0.765, blue:0.914, alpha:1 )
+        UINavigationBar.appearance().barTintColor = UIColor( colorLiteralRed:0.196, green:0.361, blue:0.502, alpha:1)
+        
+        let navbarFont = UIFont(name: "HelveticaNeue", size: 12) ?? UIFont.systemFontOfSize(12)
+        let barbuttonFont = UIFont(name: "HelveticaNeue", size: 12) ?? UIFont.systemFontOfSize(12)
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont, NSForegroundColorAttributeName:UIColor.whiteColor()]
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: barbuttonFont, NSForegroundColorAttributeName:UIColor.whiteColor()], forState: UIControlState.Normal)
+        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
+        
+        UINavigationBar.appearance().translucent = false
+
         
         do {
             
